@@ -138,7 +138,7 @@ def UCM_sampler(y_col,nsim,burnin,
         l_tau0 = (np.linalg.inv(b0) @ a0) + Xtau0.T @ H2H2 @ tau_draw / sigtau2
         tau0_hat = np.linalg.solve(Ktau0, l_tau0)
         cF_tau0, lower_tau0 = cho_factor(Ktau0, lower=True, check_finite=False)
-        z0 = rng.standard_normal(2, 1)
+        z0 = rng.standard_normal((2, 1))
         tau0 = tau0_hat + solve_triangular(cF_tau0.T, z0,lower = False ,check_finite=False)
 
         if i % 1000 == 0:
