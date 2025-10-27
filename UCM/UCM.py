@@ -66,7 +66,7 @@ def UCM_sampler(y_col,nsim,burnin,
     """
         Descrizione da fare....
     """
-    if rng is None:
+    if rng is None: # Setting the seed for the UCM chain
         rng = np.random.default_rng(104)
     
     T = len(y_col)
