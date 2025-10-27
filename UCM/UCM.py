@@ -119,7 +119,7 @@ def UCM_sampler(y_col,nsim,burnin,
         ##### Sample sigc2 #####
         res = (c - Xphi @ phi).T @ (c - Xphi @ phi)
         SSE = 0.5*float(res)
-        sigc2 = 1/rng.random.gamma(nu_c + T/2, 1/((sigc2_prior + SSE)))
+        sigc2 = 1/rng.gamma(nu_c + T/2, 1/((sigc2_prior + SSE)))
 
         ## sample sigtau2
 
