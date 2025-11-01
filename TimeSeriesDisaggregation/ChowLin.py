@@ -43,20 +43,29 @@ def Chow_Lin(y_low,y_high, strategy):
     V = lambda alpha, T, sigma2=1.0: (sigma2/(1 - alpha**2)) * alpha**np.abs(
     np.subtract.outer(np.arange(T), np.arange(T))) # np.subtract outer creates a matrix of differences 
     # the two vectors (in this case each row is the element of the first array less the elements of the second one)
-    q = np.random.uniform(-1,1)
+
+    ##################################################################
+    # Guess for the starting value of q the correlation between residuals of y_low ~ X_low regression
+    # as starting point the autocorrelation of the high frequency residuals.
+    Beta_x_low = np.linalg.solve(X_low.T @ X_low, X_low.T @ y_low)
+    res_low_start = y_low - X_low @ (Beta_x_low)
+    res_mean_low = res_low_start.mean()
+    r_low = res_low_start - res_mean_low
+    res_var_low = (np.dot(r_low[:-1].ravel(), r_low[:-1].ravel()))
+    q_low = np.dot(r_low[1:].ravel(), r_low[:-1].ravel()) / res_var_low
+    ##################################################################
     tol = 1 # starting value for convergence tolerance
     
     al = lambda a : (C @ V(a,nH) @ C.T)
-    equation = lambda a : (al(a)[0,1]/al(a)[0,0]) - q
+    equation = lambda a : (al(a)[0,1]/al(a)[0,0]) - q_low
     res = scipy.optimize.minimize_scalar(lambda a: equation(a)**2,
                       bounds=(-0.999, 0.999), method='bounded',
                       options={'xatol':1e-8})
     alpha_hat = float(res.x)
     max_iter = 1000
     it = 0
-    
     ############## Calcolo dei Beta ##############
-    def Beta_ChowLin(V,C,q,alpha_hat,X_low,y_low):
+    def Beta_ChowLin(V,C,alpha_hat,X_low,y_low):
         # Define starting Low Frequency VarCov
         var_low = C @ V(alpha_hat,nH) @ C.T
         var_low = (var_low + var_low.T) * 0.5 
@@ -68,7 +77,7 @@ def Chow_Lin(y_low,y_high, strategy):
         return Beta_chow
     
     while (tol > 1e-4) and (it <= max_iter):
-        Beta_chow = Beta_ChowLin(V,C,q,alpha_hat,X_low,y_low)
+        Beta_chow = Beta_ChowLin(V,C,alpha_hat,X_low,y_low)
         # calcolo i residui low frequency
         res = y_low - X_low @ Beta_chow
         # calcolo il nuovo alpha
@@ -79,9 +88,8 @@ def Chow_Lin(y_low,y_high, strategy):
         tol = abs(alpha_tmp - alpha_hat)
         it+=1
         alpha_hat = alpha_tmp
-    
-    print(it)
-    Beta_chow = Beta_ChowLin(V,C,q,alpha_hat,X_low,y_low)
+
+    Beta_chow = Beta_ChowLin(V,C,alpha_hat,X_low,y_low)
     res = y_low - X_low @ Beta_chow
     var_low = C @ V(alpha_hat,nH) @ C.T
     ########## Calcolo degli shock ad alta frequenza ##########
