@@ -5,11 +5,13 @@ The model,implemented via Python is the following:
 ## Model
 
 $$
-y = X\beta + \varepsilon, \qquad \varepsilon \sim \mathcal{N}(0, \sigma^2 I_n) 
-\tag{1}
+y = X\beta + \varepsilon, 
+\qquad 
+\varepsilon \sim \mathcal{N}(0, \sigma^2 I_n)
+$$
 
-\gamma_j \in \{0,1\} 
-\tag{2}
+$$
+\gamma_j \in \{0,1\}
 $$
 
 - (1) All models considered are linear Gaussian regressions under the homoskedasticity assumption.  
