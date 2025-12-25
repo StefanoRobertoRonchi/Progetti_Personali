@@ -5,9 +5,7 @@ The model,implemented via Python is the following:
 ## Model
 
 $$
-y = X\beta + \varepsilon, 
-\qquad 
-\varepsilon \sim \mathcal{N}(0, \sigma^2 I_n)
+y = X\beta + \varepsilon, \qquad \varepsilon \sim \mathcal{N}(0, \sigma^2 I_n)
 \tag{1}
 $$
 
