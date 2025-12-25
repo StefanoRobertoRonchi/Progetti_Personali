@@ -8,6 +8,7 @@ $$
 + (1 - \gamma_j) \mathcal{N}(0, \tau_j^2)
 $$
 
+
 $c_j$ and $\tau_j$ are hyperparameters related to the strictness of the selection algorithm.
 
 $c_j$ is the ratio of heights between the slab (i.e., distribution when $\gamma_j = 1$) and spike (i.e., distribution when $\gamma_j = 0$) evaluated at 0.
