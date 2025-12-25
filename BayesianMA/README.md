@@ -54,10 +54,10 @@ where $D_\gamma$ is defined as:
 $$
 D_\gamma =
 \begin{pmatrix}
-a_1 \tau_1^2 & 0 & \cdots & 0 \\
-0 & a_2 \tau_2^2 & \cdots & 0 \\
+a_1 \tau_1 & 0 & \cdots & 0 \\
+0 & a_2 \tau_2 & \cdots & 0 \\
 \vdots & \vdots & \ddots & \vdots \\
-0 & 0 & \cdots & a_k \tau_k^2
+0 & 0 & \cdots & a_k \tau_k
 \end{pmatrix}
 $$
 
