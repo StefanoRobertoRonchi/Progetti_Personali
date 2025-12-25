@@ -2,11 +2,7 @@ In the following section is reported a Python implementation of the Stochastic S
 
 The core idea of the model algorithm is the following: similarly to other shrinkage methods the coefficients $\beta$ are set with a prior mean equal to 0, but for each $j$-th coefficient a latent variable $\gamma_j$ is introduced which affects the $\beta$ variance. Specifically:
 
-$$
-\beta_j \mid \gamma_j \sim
-\gamma_j \mathcal{N}(0, c_j^2 \tau_j^2)
-+ (1 - \gamma_j) \mathcal{N}(0, \tau_j^2)
-$$
+$\beta_j \mid \gamma_j \sim \gamma_j \mathcal{N}(0, c_j^2 \tau_j^2) + (1 - \gamma_j) \mathcal{N}(0, \tau_j^2)$
 
 
 $c_j$ and $\tau_j$ are hyperparameters related to the strictness of the selection algorithm.
