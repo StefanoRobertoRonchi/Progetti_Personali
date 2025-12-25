@@ -3,8 +3,3 @@ The folder **TimeSeriesDisaggregation** contains the implementation in Python of
 For practical applications, such as forecasting production, there is the `timedisagg` package in Python which is a translation from the original package developed in R and includes several estimation methods which deal with non-stationary behavior.
 
 - Timedisagg github page: https://github.com/jstephenj14/timedisagg/tree/master
-
-
-$$
-\sum_{i=0}^n{x_i}
-$$
