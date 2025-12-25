@@ -108,15 +108,15 @@ K = X^T X / \sigma^2 + (D_\gamma R D_\gamma^T)^{-1}
 $$
 
 $$
-\sigma^2 \mid y, \beta, \gamma \sim IG(a^{*},b^{*})
+\sigma^2 \mid y, \beta, \gamma \sim IG(a^{star},b^{star})
 $$
 
 $$
-a^* = a_0 + n / 2
+a^{star} = a_0 + n / 2
 $$
 
 $$
-b^* = b_0 + (y - X \beta)^T (y - X \beta) / 2
+b^{star} = b_0 + (y - X \beta)^T (y - X \beta) / 2
 $$
 
 $$
