@@ -93,6 +93,8 @@ The three full conditional posterior distributions can be obtained analytically 
 
 ### Full Conditional Posterior
 
+The full conditional posterior distributions are the following.
+
 $$
 \beta \mid y, \gamma, \sigma^2 \sim \mathcal{N}(\beta^*, K^{-1})
 $$
@@ -110,15 +112,15 @@ $$
 $$
 
 $$
-a^* = a_0 + n/2
+a^* = a_0 + n / 2
 $$
 
 $$
-b^* = b_0 + (y - X\beta)^T (y - X\beta)/2
+b^* = b_0 + (y - X \beta)^T (y - X \beta) / 2
 $$
 
 $$
-P(\gamma_j = 1 \mid \cdot) =
+P(\gamma_j = 1 \mid \cdot) = P(\gamma_j = 1 \mid \beta) =
 \frac{p_j f(\beta_j \mid \gamma_j = 1)}
 {p_j f(\beta_j \mid \gamma_j = 1) + (1 - p_j) f(\beta_j \mid \gamma_j = 0)}
 $$
