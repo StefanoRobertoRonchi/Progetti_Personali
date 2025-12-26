@@ -19,7 +19,7 @@ In the original paper the author shows a criterion based on the intersection bet
 - (10, 100)
 - (10, 500)
 
-Therefore the choice of $\tau_j$ depends on the scale of the data making the algorithm not scale invariant.
+Therefore the choice of $\tau_j$ depends on the scale of the data making the algorithm not scale invariant. However, standardized data provides better numerical stability in matrix operation (e.g., inversion of the matrices during the $\beta$ sampling).
 
 The procedure can be a suitable alternative to OLS stepwise selection algorithm without requiring to compute model statistics (e.g., $R^2$, AIC, BIC) for a large subset of models and provides a measure of uncertainty related to the variables within the model. In credit risk it can be used to develop satellite models to link the Probability of Default to macroeconomic conditions and perform scenario stress test analysis.
 
@@ -124,3 +124,14 @@ P(\gamma_j = 1 \mid \cdot) = P(\gamma_j = 1 \mid \beta) =
 \frac{p_j f(\beta_j \mid \gamma_j = 1)}
 {p_j f(\beta_j \mid \gamma_j = 1) + (1 - p_j) f(\beta_j \mid \gamma_j = 0)}
 $$
+
+## Simulation 
+To test the "statistical" power of the script a simulation has been performed on the following DGP:
+$$
+y = 0.2 X_1 + 0.3 X_3 + 0.5 X_7 + \eps
+X = (X_1, X_2, X_3, X_4, X_5, X_6, X_7) \sim \mathcal{N}(0, \Sigma_x)
+\eps \sim \mathcal{N}(0, 0.2^2)
+$$
+
+$\Sigma_x$ is obtained by simulation. The goal of test was to assess the SSVS convergence towards the true DGP. The following are the results obtained by the simulation which shows the effectiveness of the algorithm:
+ <img width="404" height="128" alt="Screenshot 2025-12-26 at 22 38 34" src="https://github.com/user-attachments/assets/de62c1cf-6a68-414c-a7c1-85621aed43b4" />
