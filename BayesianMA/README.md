@@ -130,9 +130,13 @@ To test the "statistical" power of the script, a simulation has been performed b
 
 $$
 y = 0.2 X_1 + 0.3 X_3 + 0.5 X_7 + \varepsilon \qquad \
+$$
 
+$$
 X = (X_1, X_2, X_3, X_4, X_5, X_6, X_7) \sim \mathcal{N}(0, \Sigma_x) \qquad \
+$$
 
+$$
 \varepsilon \sim \mathcal{N}(0, 0.2^2) \
 $$
 
