@@ -129,12 +129,15 @@ $$
 To test the "statistical" power of the script, a simulation has been performed based on the following data-generating process (DGP):
 
 $$
-y = 0.2 X_1 + 0.3 X_3 + 0.5 X_7 + \eps
-X = (X_1, X_2, X_3, X_4, X_5, X_6, X_7) \sim \mathcal{N}(0, \Sigma_x)
-\eps \sim \mathcal{N}(0, 0.2^2)
+y = 0.2 X_1 + 0.3 X_3 + 0.5 X_7 + \varepsilon \qquad \\
+
+X = (X_1, X_2, X_3, X_4, X_5, X_6, X_7) \sim \mathcal{N}(0, \Sigma_x) \qquad \\
+
+\varepsilon \sim \mathcal{N}(0, 0.2^2) \\
 $$
 
 $\Sigma_x$ is obtained by simulation. The goal of test was to assess the SSVS convergence towards the true DGP. The following are the results obtained by the simulation which shows the effectiveness of the algorithm:
 
+<p align="center">
  <img width="404" height="128" alt="Screenshot 2025-12-26 at 22 38 34" src="https://github.com/user-attachments/assets/de62c1cf-6a68-414c-a7c1-85621aed43b4" />
-
+</p>
