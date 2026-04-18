@@ -145,3 +145,31 @@ $\Sigma_x$ is obtained by simulation. The goal of test was to assess the SSVS co
 <p align="center">
  <img width="404" height="128" alt="Screenshot 2025-12-26 at 22 38 34" src="https://github.com/user-attachments/assets/de62c1cf-6a68-414c-a7c1-85621aed43b4" />
 </p>
+
+## Versione Excel VBA
+
+Nel file `BMA_SSVS_Excel.bas` è disponibile una traduzione completa in VBA della pipeline:
+
+- stima `BayesianMASSVS` via Gibbs sampler;
+- estrazione **PIP** (Posterior Inclusion Probability);
+- estrazione **Top Models** più frequenti.
+
+### Utilizzo in Excel
+
+1. Apri l'editor VBA (`ALT + F11`).
+2. Importa il modulo `BayesianMA/BMA_SSVS_Excel.bas`.
+3. Assicurati che i dati siano in forma tabellare con header in prima riga.
+4. Esegui la macro `RunBayesianSSVSInteractive`.
+5. La macro chiederà:
+   - range dati;
+   - colonna target `y` (nome header o indice);
+   - colonne regressori `x` (lista separata da virgole, nomi o indici);
+   - impostazioni principali (iterazioni, burn-in, normalizzazioni, iperparametri).
+6. I risultati vengono scritti nei fogli:
+   - `BMA_PIP`
+   - `BMA_TopModels`
+   - `BMA_Draws`
+
+### Nota pratica
+
+Il calcolo in VBA può essere oneroso per dataset molto grandi o catene molto lunghe. In tali casi conviene partire da `n=1000`, `burn_in=500` e aumentare progressivamente.
